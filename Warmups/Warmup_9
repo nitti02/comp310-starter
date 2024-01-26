@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char filename[] = "example.txt";
+    FILE *fileWrite = fopen(filename, "w");
+    if (fileWrite == NULL) {
+        perror("Error opening file for writing");
+        return 1;
+    }
+    fprintf(fileWrite, "Hello, World!");
+    fclose(fileWrite);
+    FILE *fileRead = fopen(filename, "r");
+    if (fileRead == NULL) {
+        perror("Error opening file for reading");
+        return 1;
+    }
+    char line[100];
+    while (fgets(line, sizeof(line), fileRead) != NULL) {
+        printf("%s", line);
+    }
+
+    fclose(fileRead);
+
+    return 0;
+}
