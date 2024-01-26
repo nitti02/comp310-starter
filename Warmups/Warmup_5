@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+#define MAX_ROWS 2
+#define MAX_COLS 2
+
+void addMatrices(int a[MAX_ROWS][MAX_COLS], int b[MAX_ROWS][MAX_COLS], int result[MAX_ROWS][MAX_COLS]) {
+    for (int i = 0; i < MAX_ROWS; i++) {
+        for (int j = 0; j < MAX_COLS; j++) {
+            result[i][j] = a[i][j] + b[i][j];
+        }
+    }
+}
+
+void multiplyMatrices(int a[MAX_ROWS][MAX_COLS], int b[MAX_ROWS][MAX_COLS], int result[MAX_ROWS][MAX_COLS]) {
+    for (int i = 0; i < MAX_ROWS; i++) {
+        for (int j = 0; j < MAX_COLS; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < MAX_COLS; k++) {
+                result[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+}
+
+void printMatrix(int matrix[MAX_ROWS][MAX_COLS]) {
+    for (int i = 0; i < MAX_ROWS; i++) {
+        for (int j = 0; j < MAX_COLS; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int matrix1[MAX_ROWS][MAX_COLS] = {{1, 2}, {3, 4}};
+    int matrix2[MAX_ROWS][MAX_COLS] = {{5, 6}, {7, 8}};
+    int sum[MAX_ROWS][MAX_COLS];
+    int product[MAX_ROWS][MAX_COLS];
+
+    addMatrices(matrix1, matrix2, sum);
+    multiplyMatrices(matrix1, matrix2, product);
+
+    printf("Matrix Addition:\n");
+    printMatrix(sum);
+    printf("Matrix Multiplication:\n");
+    printMatrix(product);
+
+    return 0;
+}
