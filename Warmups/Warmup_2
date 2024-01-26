@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    double num1, num2;
+    char operation;
+
+    // Enter the whole equation
+    printf("Enter the whole equation, include a space between each number and operand: ");
+    scanf("%lf %c %lf", &num1, &operation, &num2);
+
+    // Determine operation and perform calculations
+    switch (operation) {
+        case '+':
+            printf("Result: %.2f\n", num1 + num2);
+            break;
+        case '-':
+            printf("Result: %.2f\n", num1 - num2);
+            break;
+        case '*':
+            printf("Result: %.2f\n", num1 * num2);
+            break;
+        case '/':
+            if (num2 != 0) {
+                printf("Result: %.2f\n", num1 / num2);
+            } else {
+                printf("Invalid (division by zero).\n");
+            }
+            break;
+        default:
+            printf("Invalid operation.\n");
+    }
+
+    return 0;
+}
